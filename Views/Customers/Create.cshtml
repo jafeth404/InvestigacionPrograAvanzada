@@ -1,0 +1,37 @@
+@model InvoiceManager.Models.Customer
+
+@{
+    ViewData["Title"] = "Crear Cliente";
+}
+
+<h1>Crear Cliente</h1>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label asp-for="Nombre"></label>
+        <input asp-for="Nombre" />
+    </div>
+
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+    </div>
+
+    <div>
+        <label asp-for="Telefono"></label>
+        <input asp-for="Telefono" />
+    </div>
+
+    <div>
+        <label asp-for="Direccion"></label>
+        <input asp-for="Direccion" />
+    </div>
+
+    <div>
+        <button type="submit">Guardar</button>
+    </div>
+</form>
+
+<p>
+    <a asp-action="Index">Volver a la lista</a>
+</p>

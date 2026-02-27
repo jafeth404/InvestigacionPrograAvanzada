@@ -1,0 +1,98 @@
+@model InvoiceManager.Models.Invoice
+
+@{
+    ViewData["Title"] = "Detalle de Factura";
+
+    var totalPagado = Model.Pagos?.Sum(p => p.Monto) ?? 0m;
+    var saldoPendiente = Model.MontoTotal - totalPagado;
+}
+
+<h1>Detalle de Factura</h1>
+
+<h3>Factura #@Model.Id</h3>
+
+<p>
+    <strong>Cliente:</strong> @Model.Customer?.Nombre <br />
+    <strong>Fecha emisión:</strong> @Model.FechaEmision.ToShortDateString() <br />
+    <strong>Fecha vencimiento:</strong> @Model.FechaLimite.ToShortDateString() <br />
+    <strong>Estado:</strong> @Model.Estado <br />
+    <strong>Monto total:</strong> @Model.MontoTotal <br />
+    <strong>Total pagado:</strong> @totalPagado <br />
+    <strong>Saldo pendiente:</strong> @saldoPendiente
+</p>
+
+<h2>Líneas de factura</h2>
+
+<p>
+    <a asp-controller="InvoiceLines" asp-action="Create" asp-route-invoiceId="@Model.Id">
+        Agregar línea
+    </a>
+</p>
+
+@if (Model.Lineas == null || !Model.Lineas.Any())
+{
+    <p>No hay líneas todavía.</p>
+}
+else
+{
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Precio unitario</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var l in Model.Lineas)
+        {
+            <tr>
+                <td>@l.Descripcion</td>
+                <td>@l.Cantidad</td>
+                <td>@l.PrecioUnidad</td>
+                <td>@(l.Cantidad * l.PrecioUnidad)</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+<h2>Pagos</h2>
+
+<p>
+    <a asp-controller="Payments" asp-action="Create" asp-route-invoiceId="@Model.Id">
+        Registrar pago
+    </a>
+</p>
+
+@if (Model.Pagos == null || !Model.Pagos.Any())
+{
+    <p>No hay pagos registrados.</p>
+}
+else
+{
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Monto</th>
+                <th>Método</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var p in Model.Pagos)
+        {
+            <tr>
+                <td>@p.FechaPago.ToShortDateString()</td>
+                <td>@p.Monto</td>
+                <td>@p.Metodo</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+<p>
+    <a asp-action="Index">Volver a la lista de facturas</a>
+</p>

@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+/* RESET BÁSICO */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.75em;
+    font-size: 16px;
+    background-color: #222;
+    color: #aaa;
+}
+
+/* Que el área principal tenga fondo dark también */
+main {
+    background-color: #222;
+    min-height: 100vh;
+}
+
+/* CONTENEDOR CENTRAL */
+.container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* TITULOS */
+h1, h2, h3, h4 {
+    color: #ddd;
+}
+
+/* LINKS */
+a[href] {
+    color: #1e8ad6;
+}
+
+a[href]:hover {
+    color: #3ba0e6;
+}
+
+/* NAVBAR DARK */
+header,
+.navbar {
+    background-color: #111 !important;
+    border-bottom: 1px solid #333 !important;
+}
+
+.navbar-brand,
+.navbar .nav-link {
+    color: #ddd !important;
+}
+
+.navbar-brand:hover,
+.navbar .nav-link:hover {
+    color: #fff !important;
+}
+
+/* Mucho contenido de bootstrap usa bg-white; lo volvemos dark */
+.bg-white {
+    background-color: #222 !important;
+}
+
+/* FORM DARK MODE */
+input,
+select,
+textarea,
+.form-control {
+    background-color: #333 !important;
+    color: #eee !important;
+    border: 1px solid #555 !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #888 !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+.form-control:focus {
+    background-color: #3c3c3c !important;
+    color: #fff !important;
+    border-color: #888 !important;
+    box-shadow: none !important;
+}
+
+/* LABELS */
+label {
+    color: #ddd;
+}
+
+/* BOTONES */
+.btn,
+button {
+    background-color: #444 !important;
+    color: #fff !important;
+    border: 1px solid #666 !important;
+}
+
+.btn:hover,
+button:hover {
+    background-color: #555 !important;
+    color: #fff !important;
+}
+
+/* TABLAS DARK */
+table {
+    color: #ddd;
+}
+
+table thead {
+    background-color: #333;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #2a2a2a;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #252525;
+}
+
+table td,
+table th {
+    border-color: #444 !important;
+}
+
+/* FOOTER */
+footer {
+    background-color: #111;
+    border-top: 1px solid #333;
+    color: #777;
+}
+
+/* DASHBOARD CARDS DARK MODE */
+.dashboard-card {
+    background-color: #2a2a2a !important;
+    border-color: #444 !important;
+    color: #eee;
+}
+
+.dashboard-card .card-title {
+    color: #fff;
+}
+
+.dashboard-card .card-text,
+.dashboard-card .text-muted {
+    color: #bbb !important;
+}

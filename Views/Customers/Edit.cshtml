@@ -1,0 +1,36 @@
+@model InvoiceManager.Models.Customer
+
+@{
+    ViewData["Title"] = "Editar Cliente";
+}
+
+<h1>Editar Cliente</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label asp-for="Nombre"></label>
+        <input asp-for="Nombre" />
+    </div>
+
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+    </div>
+
+    <div>
+        <label asp-for="Telefono"></label>
+        <input asp-for="Telefono" />
+    </div>
+
+    <div>
+        <label asp-for="Direccion"></label>
+        <input asp-for="Direccion" />
+    </div>
+
+    <div>
+        <button type="submit">Guardar cambios</button>
+        <a asp-action="Index">Cancelar</a>
+    </div>
+</form>

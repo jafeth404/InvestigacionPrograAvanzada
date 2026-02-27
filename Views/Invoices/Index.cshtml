@@ -1,0 +1,49 @@
+@model IEnumerable<InvoiceManager.Models.Invoice>
+
+@{
+    ViewData["Title"] = "Lista de Facturas";
+}
+
+<h1>Lista de Facturas</h1>
+
+<p>
+    <a asp-controller="Invoices" asp-action="Create">Crear nueva factura</a>
+</p>
+
+@if (Model == null || !Model.Any())
+{
+    <p>No hay facturas todavía.</p>
+}
+else
+{
+    <table border="1" cellpadding="8">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Cliente</th>
+            <th>Fecha emisión</th>
+            <th>Fecha vencimiento</th>
+            <th>Monto total</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var f in Model)
+        {
+            <tr>
+                <td>@f.Id</td>
+                <td>@f.Customer?.Nombre</td>
+                <td>@f.FechaEmision.ToShortDateString()</td>
+                <td>@f.FechaLimite.ToShortDateString()</td>
+                <td>@f.MontoTotal</td>
+                <td>@f.Estado</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@f.Id">Detalles</a>
+                    <!-- Más adelante: Editar / Eliminar -->
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

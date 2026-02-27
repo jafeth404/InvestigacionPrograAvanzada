@@ -1,0 +1,26 @@
+@model InvoiceManager.Models.Customer
+
+@{
+    ViewData["Title"] = "Eliminar Cliente";
+}
+
+<h1>Eliminar Cliente</h1>
+
+<p>¿Estás seguro que querés eliminar al cliente <strong>@Model.Nombre</strong>?</p>
+
+<dl>
+    <dt>Email</dt>
+    <dd>@Model.Email</dd>
+
+    <dt>Teléfono</dt>
+    <dd>@Model.Telefono</dd>
+
+    <dt>Dirección</dt>
+    <dd>@Model.Direccion</dd>
+</dl>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit">Sí, eliminar</button>
+    <a asp-action="Index">Cancelar</a>
+</form>

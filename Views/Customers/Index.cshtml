@@ -1,0 +1,47 @@
+@model IEnumerable<InvoiceManager.Models.Customer>
+
+@{
+    ViewData["Title"] = "Lista de Clientes";
+}
+
+<h1>Lista de Clientes</h1>
+
+<p>
+    <a asp-controller="Customers" asp-action="Create">Crear nuevo cliente</a>
+</p>
+
+@if (Model == null || !Model.Any())
+{
+    <p>No hay clientes todavía.</p>
+}
+else
+{
+    <table border="1" cellpadding="8">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Dirección</th>
+            <th>Acciones</th>   <!-- 👈 nueva columna -->
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Id</td>
+                <td>@c.Nombre</td>
+                <td>@c.Email</td>
+                <td>@c.Telefono</td>
+                <td>@c.Direccion</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@c.Id">Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@c.Id">Eliminar</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

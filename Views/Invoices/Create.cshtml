@@ -1,0 +1,36 @@
+@model InvoiceManager.Models.Invoice
+
+@{
+    ViewData["Title"] = "Crear Factura";
+}
+
+<h1>Crear Factura</h1>
+
+<form asp-action="Create" method="post">
+    <!-- 👇 Esto muestra los errores de validación -->
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div>
+        <label>Cliente</label>
+        <select asp-for="CustomerId" asp-items="ViewBag.CustomerId"></select>
+        <span asp-validation-for="CustomerId" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="FechaEmision"></label>
+        <input asp-for="FechaEmision" type="date" />
+        <span asp-validation-for="FechaEmision" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="FechaLimite"></label>
+        <input asp-for="FechaLimite" type="date" />
+        <span asp-validation-for="FechaLimite" class="text-danger"></span>
+    </div>
+
+    <div>
+        <!-- No pedimos TotalAmount ni Status aquí, se calculan -->
+        <button type="submit">Guardar factura</button>
+        <a asp-action="Index">Cancelar</a>
+    </div>
+</form>
